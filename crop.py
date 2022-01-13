@@ -1,10 +1,7 @@
+from cgitb import html
 import joblib
 import streamlit as st
 import os
-
-
-
-
 
 
 st.set_page_config(layout="wide")
@@ -14,6 +11,135 @@ st.sidebar.title("CSP Project")
 Mode=st.sidebar.selectbox('Choose mode',
 ['About Project','Crop Predictor','Dataset','Range of Crops']
 )
+
+if Mode=='About Project':
+
+    st.markdown(
+        """
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <title>Document</title>
+            <style>
+                .class1 {
+                    font-family: 'Times New Roman', Times, serif;
+                    font-size: 50px;
+                    font-weight: bold;
+                    color:lightseagreen;
+                }
+                .class2 {
+                    padding-left: 300px;
+                    font-style: italic;
+                    color:crimson;
+                }
+                .classmain {
+                    display: flex;
+                    flex-flow: column;
+                    text-align: center;
+                }
+                ul {
+                    list-style: disc;
+                }
+                #id1 {
+                    font-family: 'Times New Roman', Times, serif;
+                    padding-left: 20px;
+                    font-size: 30px;
+                    color: cornflowerblue;
+                }
+                #id2 {
+                    font-family: 'Times New Roman', Times, serif;
+                    padding-left: 20px;
+                    font-size: 30px;
+                    color: cornflowerblue;
+                }
+                #id3 {
+                    font-family: 'Times New Roman', Times, serif;
+                    padding-left: 20px;
+                    font-size: 30px;
+                    color: cornflowerblue;
+                }
+                p{
+                    padding-left: 20px;
+                }
+            </style>
+            <link rel="stylesheet" href="crop.css">
+        </head>
+        <body>
+            <div class="classmain">
+                <div class="class1"><u>Crop Recommendation</u></div>
+                <div class="class2">Maximize agricultural yield by recommending appropriate crops</div>
+            </div>
+            <p id="id1"><strong><u>Prerequisites:</u></strong></p>
+            <p>
+            <ul>
+                <li>
+                    In general, agriculture is the backbone of India and also plays an important role in Indian economy
+                    by providing a certain percentage of domestic product to ensure the food security. But now-a-days, food
+                    production and prediction are getting depleted due to unnatural climatic changes, which will adversely
+                    affect the economy of farmers by getting a poor yield and also help the farmers to remain less familiar
+                    in forecasting the future crops.
+                </li>
+                <li>
+                    This project work helps the beginner farmer in such a way to guide them for sowing the reasonable
+                    crops according to the physical parameters of the soil. This achieved by deploying machine learning, one
+                    of the advanced technologies in crop prediction. Logistic regression, a supervised learning algorithm
+                    puts forth in the way to achieve it. The crops are determined here, with the appropriate physical
+                    parameters which effects the crops and helps the crops to achieve a successful growth.
+                </li>
+                <li>
+                    In addition as the software, a Web application being developed. The users are encouraged to enter
+                    parameters will be taken automatically in this application in order to start the prediction process.
+                </li>
+            </ul>
+            </p>
+            <p id="id2"><strong><u>Contexts:</u></strong></p>
+            <ul>
+                <li>This dataset was build by augmenting datasets of rainfall, climate and fertilizer data available for India.
+                </li>
+            </ul>
+            <p id="id3"><strong><u>Physical parameters:</u></strong></p>
+            <p>N - ratio of Nitrogen content in soil</p>
+            <p>P - ratio of Phosphorous content in soil</p>
+            <p>K - ratio of Potassium content in soil</p>
+            <p>Temperature - temperature in degree Celsius</p>
+            <p>Humidity - relative humidity in %</p>
+            <p>PH - PH value of the soil</p>
+            <p>Rainfall - Rainfall in mm</p>
+        </body>
+        </html>
+        """,unsafe_allow_html=True)
+
+    st.markdown(
+    """
+    <style>
+    [data-testid="stSidebar"][aria-expanded="true"] > div:first-child {
+        width: 400px;
+    }
+    [data-testid="stSidebar"][aria-expanded="false"] > div:first-child {
+        width: 400px;
+        margin-left: -400px;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+    )
+
+
+    st.video('https://youtu.be/vyb_qHuY6DA')
+
+    st.markdown('''
+              # About Me \n 
+                Hey this is ** Neeraj Pokala **. \n
+                    
+                    
+                Also check me out on Social Media
+                - [git-Hub](https://github.com/neerajpokala143)
+                - [LinkedIn](https://www.linkedin.com/in/neeraj-pokala-b76b60199)
+                - [Instagram](https://instagram.com/neer_aj.p?utm_medium=copy_link)
+                \n
+                If you are interested in building more about Microsoft Azure then   [click here](https://azure.microsoft.com/en-in/)\n
+                For any Troubleshooting and Further UI development feel free to DM me at --- neerajpokala143@gmail.com
+                    ''')
 
 
 if Mode=='Crop Predictor':
@@ -33,13 +159,10 @@ if Mode=='Crop Predictor':
     def data(X,Y,Z,A,B,C,D):
 
 
-
         testing=[[X,Y,Z,A,B,C,D]]
 
         model=joblib.load('web_page')
         prediction=model.predict(testing)
-        #st.success(prediction)
-
 
         var=int(prediction)
 
@@ -102,24 +225,13 @@ import pandas as pd
 dataset=pd.read_csv("Crop_recommendation in csv.csv",header=0)
 
 
-
 if Mode=='Dataset':
     dataset.values
-
 
 if Mode=='Range of Crops':
 
     Crop=st.selectbox("select crop",['rice','maize','chickpea','kidneybeans','pigeonpeas','mothbeans','mungbean','blackgram','lentil','pomegranate',
 'banana','mango','grapes','watermelon','apple','orange','papaya','coconut','cotton','jute','coffee','muskmelon'])
-
-
-    parameter=st.selectbox("select parameters",['nitrogen','phosphorous','potassium','temperature','humidity','ph','rainfall','all'])
-
-
-
-
-
-
 
 
     stores=[]#stores all nitrogen values
@@ -151,8 +263,6 @@ if Mode=='Range of Crops':
             stores5+=ph
             stores6+=rainfall
             
-
-
 
     def Nitrogen():      
         #TO CONVERT VALUES IN INTEGER FOR NITROGEN
@@ -199,10 +309,7 @@ if Mode=='Range of Crops':
                     stores2[i+1]=t
         st.success("range of potassium value of {} is :{}-{}".format(Crop, stores2[0],stores2[-1]))
         
-        
-
-
-        
+                
     def Temperature():
         #TO CONVERT VALUES IN FLOAT FOR TEMPERATURE
         for k in range(len(stores3)):
@@ -217,8 +324,7 @@ if Mode=='Range of Crops':
                     stores3[i+1]=t
         st.success("range of temperature value of {} is :{}-{}".format(Crop,stores3[0],stores3[-1]))
         
-        
-        
+                
     def Humidity():
         #TO CONVERT VALUES IN FLOAT FOR HUMIDITY
         for k in range(len(stores4)):
@@ -247,7 +353,6 @@ if Mode=='Range of Crops':
         st.success("range of ph value of {} is:{}-{}".format(Crop,stores5[0],stores5[-1]))
 
             
-
     def Rainfall():
         #TO CONVERT VALUES IN FLOAT FOR RAINFALL
         for k in range(len(stores6)):
@@ -262,25 +367,42 @@ if Mode=='Range of Crops':
                     stores6[i+1]=t
         st.success("range of rainfall value of {} is :{}-{}".format(Crop, stores6[0],stores6[-1]))
 
+    A1,A2,A3,A4 = st.columns(4)
+    with A1:
+        button_nitrogen=st.button('nitrogen')
+    with A2:
+        button_phosphorous=st.button('phosphorous')
+    with A3:
+        button_potassium=st.button('potassium')
+    with A4:
+        button_temperature=st.button('temperature')
 
-    ranges=st.button("click me",key=2)
 
-    if ranges:
-        if parameter=='nitrogen':
-            Nitrogen()
-        elif parameter=='phosphorous':
-            Phosphorous()
-        elif parameter=='potassium':
-            Potassium()
-        elif parameter=='temperature':
-            Temperature()
-        elif parameter=='humidity':
-            Humidity()
-        elif parameter=='ph':
-            Ph()
-        elif parameter=='rainfall':
-            Rainfall()
-        elif parameter=='all':
+    A5,A6,A7,A8= st.columns(4)
+    with A5:
+        button_humidity=st.button('humidity')
+    with A6:
+        button_ph=st.button('ph')
+    with A7:
+        button_rainfall=st.button('rainfall')
+    with A8:
+        button_all=st.button('all')
+    
+    if button_nitrogen:
+        Nitrogen()
+    elif button_phosphorous:
+        Phosphorous()
+    elif button_potassium:
+        Potassium()
+    elif button_temperature:
+        Temperature()
+    elif button_humidity:
+        Humidity()
+    elif button_ph:
+        Ph()
+    elif button_rainfall:
+        Rainfall()
+    elif button_all:
             Nitrogen()
             Phosphorous()
             Potassium()
