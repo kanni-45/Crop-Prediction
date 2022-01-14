@@ -229,6 +229,7 @@ dataset=pd.read_csv("Crop_recommendation.csv",header=0)
 
 if Mode=='Dataset':
     dataset.values
+    import joblib
 
 if Mode=='Range of Crops':
 
