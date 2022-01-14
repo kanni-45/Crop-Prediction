@@ -221,7 +221,7 @@ if Mode=='Crop Predictor':
 #st.write(Crop)
 
 import pandas as pd
-dataset=pd.read_csv("Crop_recommendation in csv.csv",header=0)
+dataset=pd.read_csv("Crop_recommendation.csv",header=0)
 
 
 if Mode=='Dataset':
