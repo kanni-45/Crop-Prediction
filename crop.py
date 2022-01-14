@@ -213,9 +213,9 @@ if Mode=='Crop Predictor':
             st.success("code run no match")
 
 
-    if box1 or box2 or box3 and box4 and box5 and box6 and box7:
-        if st.button("click me"):
-            data(box1,box2,box3,box4,box5,box6,box7)
+    
+    if st.button("click me"):
+        data(box1,box2,box3,box4,box5,box6,box7)
 
 
 #st.write(Crop)
@@ -409,5 +409,7 @@ if Mode=='Range of Crops':
             Humidity()
             Ph()
             Rainfall()
+
+
 
 
