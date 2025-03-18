@@ -6,7 +6,7 @@ import os
 import base64
 import time
 
-# st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 st.sidebar.title("Crop prediction")
 
