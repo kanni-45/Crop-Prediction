@@ -69,7 +69,7 @@ if Mode == 'About Project':
         </head>
         <body>
             <div class="classmain">
-                <div class="class1"><u>Crop Recommendation</u></div>
+                <div class="class1"><u>Crop Prediction</u></div>
                 <div class="class2">Maximize agricultural yield by recommending appropriate crops</div>
             </div>
             <p id="id1"><strong><u>Prerequisites:</u></strong></p>
@@ -127,7 +127,7 @@ if Mode == 'About Project':
         unsafe_allow_html=True,
     )
 
-    st.video('https://youtu.be/vyb_qHuY6DA')
+    # st.video('https://youtu.be/vyb_qHuY6DA')
     
     
 # if Mode =='About Me':
